@@ -32,7 +32,7 @@ namespace Ex04.Menus.Interfaces
             }
         }
  
-        private readonly List<PressedObserver> m_ClickListeners = new List<PressedObserver>();
+        private readonly List<SelectedListener> m_ClickListeners = new List<SelectedListener>();
 
 
         public MenuItem()
@@ -44,12 +44,12 @@ namespace Ex04.Menus.Interfaces
             //    this.MenuItems.Add(Back);
             //}
         }
-        public void AddListener(PressedObserver i_PressedObserver)
+        public void AddListener(SelectedListener i_PressedObserver)
         {
             m_ClickListeners.Add(i_PressedObserver);
         }
 
-        public void RemoveListener(PressedObserver i_PressedObserver)
+        public void RemoveListener(SelectedListener i_PressedObserver)
         {
             m_ClickListeners.Remove(i_PressedObserver);
         }

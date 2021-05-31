@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MainMenu : PressedObserver
+    public class MainMenu : SelectedListener
     {
         public readonly List<MenuItem> m_MenuItems = new List<MenuItem>();
         public MenuItem m_ExitMenuItem = new MenuItem();
@@ -23,7 +23,7 @@ namespace Ex04.Menus.Interfaces
 
         public void AddMenuItem(MenuItem i_MenuItem)
         {
-            i_MenuItem.AddListener(this as PressedObserver);
+            i_MenuItem.AddListener(this as SelectedListener);
             this.m_MenuItems.Add(i_MenuItem);
         }
 

@@ -36,7 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PressedObserver.cs" />
+    <Compile Include="SelectedListener.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuItem.cs" />
   </ItemGroup>
