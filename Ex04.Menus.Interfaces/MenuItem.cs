@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MenuItem
+    public abstract class MenuItem 
     {
         private string m_Title;
 
@@ -18,45 +22,30 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        private List<MenuItem> m_MenuItems;
+        private SubMenu m_Father;
 
-        public List<MenuItem> MenuItems
+        public SubMenu Father
         {
             get
             {
-                return m_MenuItems;
+                return m_Father;
             }
             set
             {
-                m_MenuItems = value;
+                m_Father = value;
             }
         }
- 
-        private readonly List<SelectedListener> m_ClickListeners = new List<SelectedListener>();
 
+        private readonly List<ISelectedListener> m_ClickListeners = new List<ISelectedListener>();
 
-        public MenuItem()
-        {
-            //if(!this.IsAction)
-            //{
-            //    MenuItem Back = new MenuItem();
-            //    Back.AttachObserver(this as PressedObserver);
-            //    this.MenuItems.Add(Back);
-            //}
-        }
-        public void AddListener(SelectedListener i_PressedObserver)
+        public void AddListener(ISelectedListener i_PressedObserver)
         {
             m_ClickListeners.Add(i_PressedObserver);
         }
 
-        public void RemoveListener(SelectedListener i_PressedObserver)
+        public void RemoveListener(ISelectedListener i_PressedObserver)
         {
             m_ClickListeners.Remove(i_PressedObserver);
-        }
-
-        OnClick()
-        {
-
         }
     }
 }

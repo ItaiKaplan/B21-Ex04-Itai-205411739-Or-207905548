@@ -6,28 +6,26 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MainMenu : SelectedListener
+    public class MainMenu : SubMenu, ISelectedListener
     {
         public readonly List<MenuItem> m_MenuItems = new List<MenuItem>();
-        public MenuItem m_ExitMenuItem = new MenuItem();
+        public MenuAction m_ExitMenuItem = new MenuAction();
         private MenuItem m_CurrentMenuItem;
 
         public MainMenu()
         {
+            this.Father = null;
             this.AddMenuItem(this.m_ExitMenuItem);
-        }
-        public void PreformTask(MenuItem i_MenuItem)
-        {
-            throw new NotImplementedException();
         }
 
         public void AddMenuItem(MenuItem i_MenuItem)
         {
-            i_MenuItem.AddListener(this as SelectedListener);
+            i_MenuItem.Father = this;
+            i_MenuItem.AddListener(this as ISelectedListener);
             this.m_MenuItems.Add(i_MenuItem);
         }
 
-        public void ItemClick(MenuItem i_MenuItem)
+        public void ItemClick(SubMenu i_MenuItem)
         {
             this.m_CurrentMenuItem = i_MenuItem;
         }
@@ -42,6 +40,11 @@ namespace Ex04.Menus.Interfaces
                 }
                 DisplayMenuItem(this.m_CurrentMenuItem);
             }
+        }
+
+        public void PreformTask(SubMenu i_MenuItem)
+        {
+            throw new NotImplementedException();
         }
     }
 }

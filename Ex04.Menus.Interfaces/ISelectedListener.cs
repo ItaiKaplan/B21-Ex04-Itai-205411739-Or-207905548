@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public interface SelectedListener
+    public interface ISelectedListener
     {
-        void PreformTask(MenuItem i_MenuItem);
+        void PreformTask(SubMenu i_MenuItem);
     }
 }
