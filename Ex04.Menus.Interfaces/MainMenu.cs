@@ -8,7 +8,15 @@ namespace Ex04.Menus.Interfaces
 {
     public class MainMenu : ISelectedListener
     {
-        private readonly SubMenu m_MainMenu = new SubMenu("MainMenu", null, "exit");
+        private class ExitItem : IRunnable
+        {
+            void IRunnable.Run()
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private readonly SubMenu m_MainMenu = new SubMenu("Main Menu", null, "exit");
         private MenuItem m_CurrentMenuItem;
 
         public MainMenu()
@@ -21,7 +29,7 @@ namespace Ex04.Menus.Interfaces
             while(userInput != 0)
             {
                 Console.WriteLine(this.m_CurrentMenuItem.ToString());
-                this.m_CurrentMenuItem.RunMenu();
+                (this.m_CurrentMenuItem as SubMenu).RunMenu();
             }
         }
 

@@ -14,7 +14,7 @@ namespace Ex04.Menus.Interfaces
         {
             this.m_Action = i_Action;
         }
-        public void OnSelected()
+        public override void OnSelected()
         {
             this.m_Action.Run();
             this.Father.OnSelected();

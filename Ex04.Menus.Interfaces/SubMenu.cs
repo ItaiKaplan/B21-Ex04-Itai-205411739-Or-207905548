@@ -21,7 +21,7 @@ namespace Ex04.Menus.Interfaces
             }
         }
  
-        public SubMenu(string i_Title, SubMenu i_Father, string i_BackOptionName) : base(i_Title, i_Father)
+        public SubMenu(string i_Title, MenuItem i_Father, string i_BackOptionName) : base(i_Title, i_Father)
         {
             this.m_MenuItems = new List<MenuItem>();
             this.r_BackOptionName = i_BackOptionName;
@@ -43,7 +43,7 @@ namespace Ex04.Menus.Interfaces
             i_MenuItem.Father = null;
         }
 
-        public void OnSelected()
+        public override void OnSelected()
         {
             this.notifyAllSelectedListener();
         }
@@ -58,13 +58,63 @@ namespace Ex04.Menus.Interfaces
 
         public void RunMenu()
         {
-            string userInputString;
             int userInput;
-            bool isInputValid = false;
 
             Console.WriteLine(this.ToString());
+            userInput = getValidUserInput();
+            if(userInput == 0)
+            {
+                if(this.Father == null )
+                {
+                    Environment.Exit(0);
+                }
+                this.Father.OnSelected();
+            }
+            else
+            {
+                this.m_MenuItems[userInput - 1].OnSelected();
+            }
+
 
         }
+
+        private int getValidUserInput()
+        {
+            string userInputString;
+            int userInput = 0;
+            bool isInputValid = false;
+
+            while(!isInputValid)
+            {
+                Console.WriteLine("Please Select Option");
+                userInputString = Console.ReadLine();
+                isInputValid = validateInput(userInputString);
+                if (!isInputValid)
+                {
+                    Console.WriteLine("Invalid Input\n");
+                }
+            }
+
+            return getValidUserInput();
+        }
+
+        private bool validateInput(string userInputString)
+        {
+            bool isInputValid = false;
+            int userInput;
+
+            isInputValid = int.TryParse(userInputString, out userInput);
+            if (isInputValid)
+            {
+                if (userInput < 0 || userInput > this.m_MenuItems.Count)
+                {
+                    isInputValid = false;
+                }
+            }
+
+            return isInputValid;
+        }
+
         public override string ToString()
         {
             StringBuilder menuDisplay = new StringBuilder($"0. {this.r_BackOptionName}\n");
