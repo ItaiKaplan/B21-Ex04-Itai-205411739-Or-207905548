@@ -36,9 +36,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SelectedListener.cs" />
+    <Compile Include="IRunnable.cs" />
+    <Compile Include="ISelectedListener.cs" />
     <Compile Include="MainMenu.cs" />
+    <Compile Include="MenuAction.cs" />
     <Compile Include="MenuItem.cs" />
+    <Compile Include="SubMenu.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

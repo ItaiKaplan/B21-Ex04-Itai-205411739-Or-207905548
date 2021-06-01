@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MenuItem
+    public abstract class MenuItem 
     {
         private string m_Title;
-        private readonly List<MenuItem> m_MenuItems;
-        private readonly List<SelectedListener> m_SelectedListeners = new List<SelectedListener>();
 
         public string Title
         {
@@ -20,42 +22,30 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        public List<SelectedListener> SelectedListeners
+        private SubMenu m_Father;
+
+        public SubMenu Father
         {
             get
             {
-                return m_ClickListeners;
+                return m_Father;
             }
-        } 
-
-        public List<MenuItem> MenuItems
-        {
-            get
+            set
             {
-                return m_MenuItems;
+                m_Father = value;
             }
         }
- 
 
-        public MenuItem()
-        {
-        }
+        private readonly List<ISelectedListener> m_ClickListeners = new List<ISelectedListener>();
 
-        public void AddListener(SelectedListener i_PressedObserver)
+        public void AddListener(ISelectedListener i_PressedObserver)
         {
             m_ClickListeners.Add(i_PressedObserver);
         }
 
-        public void RemoveListener(SelectedListener i_PressedObserver)
+        public void RemoveListener(ISelectedListener i_PressedObserver)
         {
             m_ClickListeners.Remove(i_PressedObserver);
         }
-
-        private void notifySelectedListener()
-        {
-            
-        }
-
-        public void OnClick()
     }
 }
