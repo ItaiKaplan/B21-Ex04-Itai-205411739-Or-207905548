@@ -8,6 +8,6 @@ namespace Ex04.Menus.Interfaces
 {
     public interface SelectedListener
     {
-        void PreformTask(MenuItem i_MenuItem);
+        void OnSelection(MenuItem i_MenuItem);
     }
 }

@@ -5,6 +5,8 @@ namespace Ex04.Menus.Interfaces
     public class MenuItem
     {
         private string m_Title;
+        private readonly List<MenuItem> m_MenuItems;
+        private readonly List<SelectedListener> m_SelectedListeners = new List<SelectedListener>();
 
         public string Title
         {
@@ -18,7 +20,13 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        private List<MenuItem> m_MenuItems;
+        public List<SelectedListener> SelectedListeners
+        {
+            get
+            {
+                return m_ClickListeners;
+            }
+        } 
 
         public List<MenuItem> MenuItems
         {
@@ -26,24 +34,13 @@ namespace Ex04.Menus.Interfaces
             {
                 return m_MenuItems;
             }
-            set
-            {
-                m_MenuItems = value;
-            }
         }
  
-        private readonly List<SelectedListener> m_ClickListeners = new List<SelectedListener>();
-
 
         public MenuItem()
         {
-            //if(!this.IsAction)
-            //{
-            //    MenuItem Back = new MenuItem();
-            //    Back.AttachObserver(this as PressedObserver);
-            //    this.MenuItems.Add(Back);
-            //}
         }
+
         public void AddListener(SelectedListener i_PressedObserver)
         {
             m_ClickListeners.Add(i_PressedObserver);
@@ -54,9 +51,11 @@ namespace Ex04.Menus.Interfaces
             m_ClickListeners.Remove(i_PressedObserver);
         }
 
-        OnClick()
+        private void notifySelectedListener()
         {
-
+            
         }
+
+        public void OnClick()
     }
 }
