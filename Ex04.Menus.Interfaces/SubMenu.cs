@@ -18,24 +18,17 @@ namespace Ex04.Menus.Interfaces
                 m_MenuItems = value;
             }
         }
- 
-        
 
-
-        public SubMenu()
+        public SubMenu(string i_Title, SubMenu i_Father) : base(i_Title, i_Father)
         {
-  
+            this.MenuItems = new List<SubMenu>();
+
         }
 
-
-        public void PreformTask(SubMenu i_MenuItem)
+        public void AddMenuItem(MenuItem i_MenuItem)
         {
-            throw new System.NotImplementedException();
-        }
-
-        SubMenu()
-        {
-
+            i_MenuItem.Father = this;
+            this.MenuItems.Add(i_MenuItem);
         }
     }
 }

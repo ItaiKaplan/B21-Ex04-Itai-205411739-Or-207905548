@@ -20,9 +20,8 @@ namespace Ex04.Menus.Interfaces
 
         public void AddMenuItem(MenuItem i_MenuItem)
         {
-            i_MenuItem.Father = this;
             i_MenuItem.AddListener(this as ISelectedListener);
-            this.m_MenuItems.Add(i_MenuItem);
+            
         }
 
         public void ItemClick(SubMenu i_MenuItem)

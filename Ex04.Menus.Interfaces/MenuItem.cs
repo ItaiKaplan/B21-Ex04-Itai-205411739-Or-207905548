@@ -38,6 +38,12 @@ namespace Ex04.Menus.Interfaces
 
         private readonly List<ISelectedListener> m_ClickListeners = new List<ISelectedListener>();
 
+        public MenuItem(string i_Title, SubMenu i_Father)
+        {
+            this.Title = i_Title;
+            this.Father = i_Father;
+        }
+
         public void AddListener(ISelectedListener i_PressedObserver)
         {
             m_ClickListeners.Add(i_PressedObserver);
