@@ -9,7 +9,7 @@ namespace Ex04.Menus.Interfaces
     public abstract class MenuItem 
     {
         protected string m_Title;
-        protected MenuItem m_Father;
+        protected SubMenu m_Father;
         protected readonly List<ISelectedListener> m_SelectedListeners = new List<ISelectedListener>();
 
         public string Title
@@ -36,10 +36,9 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        public MenuItem(string i_Title, MenuItem i_Father)
+        public MenuItem(string i_Title)
         {
             this.m_Title = i_Title;
-            this.m_Father = i_Father;
         }
 
         public void AddListener(ISelectedListener i_SelectedListener)

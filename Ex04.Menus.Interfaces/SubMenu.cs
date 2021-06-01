@@ -21,7 +21,7 @@ namespace Ex04.Menus.Interfaces
             }
         }
  
-        public SubMenu(string i_Title, MenuItem i_Father, string i_BackOptionName) : base(i_Title, i_Father)
+        public SubMenu(string i_Title, string i_BackOptionName) : base(i_Title)
         {
             this.m_MenuItems = new List<MenuItem>();
             this.r_BackOptionName = i_BackOptionName;
@@ -88,25 +88,25 @@ namespace Ex04.Menus.Interfaces
             {
                 Console.WriteLine("Please Select Option");
                 userInputString = Console.ReadLine();
-                isInputValid = validateInput(userInputString);
+                isInputValid = validateInput(userInputString, out userInput);
                 if (!isInputValid)
                 {
                     Console.WriteLine("Invalid Input\n");
                 }
             }
 
-            return getValidUserInput();
+            return userInput;
         }
 
-        private bool validateInput(string userInputString)
+        private bool validateInput(string userInputString, out int io_UserInput)
         {
             bool isInputValid = false;
-            int userInput;
+            ;
 
-            isInputValid = int.TryParse(userInputString, out userInput);
+            isInputValid = int.TryParse(userInputString, out io_UserInput);
             if (isInputValid)
             {
-                if (userInput < 0 || userInput > this.m_MenuItems.Count)
+                if (io_UserInput < 0 || io_UserInput > this.m_MenuItems.Count)
                 {
                     isInputValid = false;
                 }

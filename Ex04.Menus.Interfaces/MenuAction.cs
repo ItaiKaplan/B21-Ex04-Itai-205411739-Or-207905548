@@ -10,7 +10,7 @@ namespace Ex04.Menus.Interfaces
     {
         private IRunnable m_Action;
 
-        public MenuAction (string i_Title, SubMenu i_Father, IRunnable i_Action) : base(i_Title, i_Father)
+        public MenuAction (string i_Title, IRunnable i_Action) : base(i_Title)
         {
             this.m_Action = i_Action;
         }

@@ -16,8 +16,16 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        private readonly SubMenu m_MainMenu = new SubMenu("Main Menu", null, "exit");
+        private readonly SubMenu m_MainMenu = new SubMenu("Main Menu", "exit");
         private MenuItem m_CurrentMenuItem;
+
+        public SubMenu Main
+        {
+            get
+            {
+                return this.m_MainMenu;
+            }
+        }
 
         public MainMenu()
         {
@@ -26,9 +34,8 @@ namespace Ex04.Menus.Interfaces
 
         public void Show()
         {
-            while(userInput != 0)
+            while(true)
             {
-                Console.WriteLine(this.m_CurrentMenuItem.ToString());
                 (this.m_CurrentMenuItem as SubMenu).RunMenu();
             }
         }
