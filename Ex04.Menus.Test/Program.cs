@@ -13,7 +13,7 @@ namespace Ex04.Menus.Test
         public static void Main()
         {
             MainMenu mainMenu = new MainMenu();
-
+            
             SubMenu firstMenu = new SubMenu("Version And Spaces", "Back");
             SubMenu secondMenu = new SubMenu("Date and Time", "Back");
             mainMenu.Main.AddMenuItem(firstMenu);

@@ -30,6 +30,7 @@ namespace Ex04.Menus.Interfaces
         public MainMenu()
         {
             this.m_CurrentMenuItem = m_MainMenu;
+            this.m_MainMenu.AddListener(this);
         }
 
         public void Show()
@@ -81,6 +82,7 @@ namespace Ex04.Menus.Interfaces
                 }*/
         public void OnSelect(SubMenu i_SubMenu)
         {
+            Console.WriteLine($"{i_SubMenu.Title} Menu Selected");
             this.m_CurrentMenuItem = i_SubMenu;
         }
     }
