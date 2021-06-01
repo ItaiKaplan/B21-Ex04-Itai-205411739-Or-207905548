@@ -3,11 +3,10 @@
 namespace Ex04.Menus.Interfaces
 {
     public class SubMenu : MenuItem
-    {
+    { 
+        private List<MenuItem> m_MenuItems;
 
-        private List<SubMenu> m_MenuItems;
-
-        public List<SubMenu> MenuItems
+        public List<MenuItem> MenuItems
         {
             get
             {
@@ -19,16 +18,25 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        public SubMenu(string i_Title, SubMenu i_Father) : base(i_Title, i_Father)
-        {
-            this.MenuItems = new List<SubMenu>();
+        public SubMenu(string i_Title, SubMenu i_Father) : base(i_Title, i_Father) {
 
+            this.m_MenuItems = new List<MenuItem>();
         }
-
+ 
         public void AddMenuItem(MenuItem i_MenuItem)
         {
+            this.m_MenuItems.Add(i_MenuItem);
             i_MenuItem.Father = this;
-            this.MenuItems.Add(i_MenuItem);
+            foreach (ISelectedListener listener in this.m_SelectedListeners)
+            {
+                i_MenuItem.AddListener(listener);
+            }
+        }
+
+        public void RemoveMenuItem(MenuItem i_MenuItem)
+        {
+            this.m_MenuItems.Remove(i_MenuItem);
+            i_MenuItem.Father = null;
         }
     }
 }
