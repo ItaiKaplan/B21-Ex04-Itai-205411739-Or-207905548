@@ -6,44 +6,82 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MainMenu : SubMenu, ISelectedListener
+    public class MainMenu : ISelectedListener
     {
-        public readonly List<MenuItem> m_MenuItems = new List<MenuItem>();
-        public MenuAction m_ExitMenuItem = new MenuAction();
-        private MenuItem m_CurrentMenuItem;
-
-        public MainMenu()
+        private class ExitItem : IRunnable
         {
-            this.Father = null;
-            this.AddMenuItem(this.m_ExitMenuItem);
-        }
-
-        public void AddMenuItem(MenuItem i_MenuItem)
-        {
-            i_MenuItem.AddListener(this as ISelectedListener);
-            
-        }
-
-        public void ItemClick(SubMenu i_MenuItem)
-        {
-            this.m_CurrentMenuItem = i_MenuItem;
-        }
-
-        public void ShowMenu()
-        {
-            while(this.m_CurrentMenuItem != this.m_ExitMenuItem)
+            void IRunnable.Run()
             {
-                if(this.m_CurrentMenuItem.isAction)
-                {
-                    RunMenuItemFunction(this.m_CurrentMenuitem);
-                }
-                DisplayMenuItem(this.m_CurrentMenuItem);
+                Environment.Exit(0);
             }
         }
 
-        public void PreformTask(SubMenu i_MenuItem)
+        private readonly SubMenu m_MainMenu = new SubMenu("Main Menu", "exit");
+        private MenuItem m_CurrentMenuItem;
+
+        public SubMenu Main
         {
-            throw new NotImplementedException();
+            get
+            {
+                return this.m_MainMenu;
+            }
+        }
+
+        public MainMenu()
+        {
+            this.m_CurrentMenuItem = m_MainMenu;
+        }
+
+        public void Show()
+        {
+            while(true)
+            {
+                (this.m_CurrentMenuItem as SubMenu).RunMenu();
+            }
+        }
+
+
+        /*        public readonly List<MenuItem> m_MenuItems = new List<MenuItem>();
+                public MenuAction m_ExitMenuItem = new MenuAction();
+                private MenuItem m_CurrentMenuItem;
+
+                public MainMenu()
+                {
+                    this.Father = null;
+                    this.AddMenuItem(this.m_ExitMenuItem);
+                }
+
+                public void AddMenuItem(MenuItem i_ChildMenuItem)
+                {
+                    i_MenuItem.Father = this;
+                    i_MenuItem.AddListener(this as ISelectedListener);
+                    this.m_MenuItems.Add(i_MenuItem);
+                }
+
+                public void ItemClick(SubMenu i_MenuItem)
+                {
+                    this.m_CurrentMenuItem = i_MenuItem;
+                }
+
+                public void ShowMenu()
+                {
+                    while (this.m_CurrentMenuItem != this.m_ExitMenuItem)
+                    {
+                        if (this.m_CurrentMenuItem.isAction)
+                        {
+                            RunMenuItemFunction(this.m_CurrentMenuitem);
+                        }
+                        DisplayMenuItem(this.m_CurrentMenuItem);
+                    }
+                }
+
+                public void PreformTask(SubMenu i_MenuItem)
+                {
+                    throw new NotImplementedException();
+                }*/
+        public void OnSelect(SubMenu i_SubMenu)
+        {
+            this.m_CurrentMenuItem = i_SubMenu;
         }
     }
 }

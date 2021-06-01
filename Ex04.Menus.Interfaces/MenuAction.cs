@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MenuAction : MenuItem, IRunnable
+    public class MenuAction : MenuItem
     {
-        public void Run()
+        private IRunnable m_Action;
+
+        public MenuAction (string i_Title, IRunnable i_Action) : base(i_Title)
         {
-            throw new NotImplementedException();
+            this.m_Action = i_Action;
+        }
+        public override void OnSelected()
+        {
+            this.m_Action.Run();
+            this.Father.OnSelected();
         }
     }
 }
