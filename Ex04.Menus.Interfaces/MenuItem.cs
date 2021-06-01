@@ -8,7 +8,9 @@ namespace Ex04.Menus.Interfaces
 {
     public abstract class MenuItem 
     {
-        private string m_Title;
+        protected string m_Title;
+        protected SubMenu m_Father;
+        protected readonly List<ISelectedListener> m_SelectedListeners = new List<ISelectedListener>();
 
         public string Title
         {
@@ -22,8 +24,6 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        private SubMenu m_Father;
-
         public SubMenu Father
         {
             get
@@ -36,16 +36,20 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        private readonly List<ISelectedListener> m_ClickListeners = new List<ISelectedListener>();
-
-        public void AddListener(ISelectedListener i_PressedObserver)
+        public MenuItem(string i_Title, SubMenu i_Father)
         {
-            m_ClickListeners.Add(i_PressedObserver);
+            this.m_Title = i_Title;
+            this.m_Father = i_Father;
         }
 
-        public void RemoveListener(ISelectedListener i_PressedObserver)
+        public void AddListener(ISelectedListener i_SelectedListener)
         {
-            m_ClickListeners.Remove(i_PressedObserver);
+            this.m_SelectedListeners.Add(i_SelectedListener);
+        }
+
+        public void RemoveListener(ISelectedListener i_SelectedListener)
+        {
+            this.m_SelectedListeners.Remove(i_SelectedListener);
         }
     }
 }
