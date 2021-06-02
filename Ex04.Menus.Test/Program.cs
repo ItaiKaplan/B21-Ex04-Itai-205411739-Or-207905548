@@ -17,8 +17,11 @@ namespace Ex04.Menus.Test
             SubMenu firstMenu = new SubMenu("Version And Spaces", "Back");
             SubMenu secondMenu = new SubMenu("Date and Time", "Back");
             mainMenu.Main.AddMenuItem(firstMenu);
-            mainMenu.Main.AddMenuItem(secondMenu);
+           
 
+            firstMenu.AddMenuItem(secondMenu);
+            //firstMenu.AddListener(mainMenu);
+            //secondMenu.AddListener(mainMenu);
             MenuAction showVersion = new MenuAction("Show Version",new ShowVersion());
             MenuAction showDate = new MenuAction("Show Date", new ShowDate());
             MenuAction showTime = new MenuAction("Show Time", new ShowTime());
