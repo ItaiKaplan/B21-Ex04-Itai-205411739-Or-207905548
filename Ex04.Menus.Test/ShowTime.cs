@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    class ShowTime : Interfaces.IRunnable
+    class ShowTime : Interfaces.IRunnable, Delegates.IRunnable
     {
-        void Interfaces.IRunnable.Run()
+        public void Run()
         {
             Console.Clear();
             Console.WriteLine(DateTime.Now.ToString("HH:mm:ss"));

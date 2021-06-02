@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    internal class ShowVersion : Interfaces.IRunnable
+    internal class ShowVersion : Interfaces.IRunnable, Delegates.IRunnable
     {
-        void Interfaces.IRunnable.Run()
+        public void Run()
         {
             Console.Clear();
             Console.WriteLine("Version: 21.1.4.8930");

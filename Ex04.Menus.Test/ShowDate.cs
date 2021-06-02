@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex04.Menus.Delegates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    internal class ShowDate : Interfaces.IRunnable
+    internal class ShowDate : Interfaces.IRunnable, Delegates.IRunnable
     {
-        void Interfaces.IRunnable.Run()
+        public void Run()
         {
             Console.Clear();
             Console.WriteLine(DateTime.Now.ToString("dddd, MMM dd yyyy"));

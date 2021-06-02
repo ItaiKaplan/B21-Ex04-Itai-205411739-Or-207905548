@@ -33,11 +33,11 @@ namespace Ex04.Menus.Delegates
 
         public MainMenu()
         {
-            this.CurrentMenuItem = Main;
-            this.Main.AddListener(this);
+            this.CurrentMenuItem = m_MainMenu;
+            this.m_MainMenu.m_SelectedDelegates += this.OnSelect;
         }
 
-        private void selectAll(SubMenu i_SubMenu)
+/*        private void selectAll(SubMenu i_SubMenu)
         {
             foreach(MenuItem item in Main.MenuItems)
             {
@@ -47,17 +47,17 @@ namespace Ex04.Menus.Delegates
                 }
                 item.SelectedDelgates += this.OnSelect();
             }
-        }
+        }*/
 
         public void Show()
         {
             while(true)
             {
-                (this.CurrentMenuItem as SubMenu).RunMenu();
+                this.CurrentMenuItem.RunItem();
             }
         }
 
-        public void OnSelect(SubMenu i_SubMenu)
+        public void OnSelect(MenuItem i_SubMenu)
         {
             this.CurrentMenuItem = i_SubMenu;
         }

@@ -14,9 +14,15 @@ namespace Ex04.Menus.Delegates
         {
             this.m_Action = i_Action;
         }
-        public override void OnSelected()
+
+        public override void RunItem()
         {
             this.m_Action.Run();
+        }
+
+        public override void OnSelected()
+        {
+            this.RunItem();
             this.Father.OnSelected();
         }
     }
