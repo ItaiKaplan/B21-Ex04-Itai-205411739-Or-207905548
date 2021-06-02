@@ -75,8 +75,6 @@ namespace Ex04.Menus.Interfaces
             {
                 this.m_MenuItems[userInput - 1].OnSelected();
             }
-
-
         }
 
         private int getValidUserInput()
