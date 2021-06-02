@@ -39,10 +39,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRunnable.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuAction.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="SubMenu.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

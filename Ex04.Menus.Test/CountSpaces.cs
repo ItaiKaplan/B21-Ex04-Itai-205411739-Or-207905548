@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    internal class CountSpaces : Interfaces.IRunnable
+    internal class CountSpaces : Interfaces.IRunnable, Delegates.IRunnable
     {
-        void Interfaces.IRunnable.Run()
+        public void Run()
         {
             string userInput;
             int numberOfSpaces = 0;

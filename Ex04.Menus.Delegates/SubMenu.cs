@@ -30,31 +30,23 @@ namespace Ex04.Menus.Delegates
             this.r_BackOptionName = i_BackOptionName;
         }
 
-        public void AddMenuItem(MenuItem i_MenuItem)
+        public void AddMenuItem(MenuItem i_MenuItem, Action<MenuItem> i_OnSelectHandler)
         {
             this.MenuItems.Add(i_MenuItem);
             i_MenuItem.Father = this;
-
-            i_MenuItem.SelectedDelgates += this.SelectedDelgates;
-            
+            i_MenuItem.m_SelectedDelegates += i_OnSelectHandler;
         }
 
-        public void RemoveMenuItem(MenuItem i_MenuItem)
+        public void RemoveMenuItem(MenuItem i_MenuItem, Action<MenuItem> i_OnSelectHandler)
         {
             this.MenuItems.Remove(i_MenuItem);
             i_MenuItem.Father = null;
-        }
-
-        public override void OnSelected()
-        {
-            foreach(ISelectedListener listener in this.m_SelectedListeners)
-            {
-                listener.OnSelect(this);
-            }
+            i_MenuItem.m_SelectedDelegates -= i_OnSelectHandler;
         }
 
 
-        public void RunMenu()
+
+        public override void RunItem()
         {
             int userInput;
             Console.Clear();
