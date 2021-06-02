@@ -53,8 +53,9 @@ namespace Ex04.Menus.Interfaces
         }
 
 
-        public void RunMenu()
+        public void RunMenu(out bool o_exitFlag)
         {
+            o_exitFlag = false;
             int userInput;
             Console.Clear();
             Console.WriteLine(this.ToString());
@@ -63,9 +64,12 @@ namespace Ex04.Menus.Interfaces
             {
                 if(this.Father == null)
                 {
-                    Environment.Exit(0);
+                    o_exitFlag = true;
                 }
-                this.Father.OnSelected();
+                else 
+                {
+                    this.Father.OnSelected();
+                }
             }
             else
             {
@@ -112,9 +116,8 @@ namespace Ex04.Menus.Interfaces
 
         public override string ToString()
         {
-            StringBuilder menuDisplay = new StringBuilder($"{this.Title}\n\n");
+            StringBuilder menuDisplay = new StringBuilder($"{this.Title} - Interfaces\n\n");
             int i = 1;
-
 
             menuDisplay.Append($"0. {this.r_BackOptionName}\n");
             foreach(MenuItem item in this.m_MenuItems)

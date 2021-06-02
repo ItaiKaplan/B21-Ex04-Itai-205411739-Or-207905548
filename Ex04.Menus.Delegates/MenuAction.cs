@@ -8,16 +8,17 @@ namespace Ex04.Menus.Delegates
 {
     public class MenuAction : MenuItem
     {
-        private IRunnable m_Action;
+        public event Action m_Action;
+        //private IRunnable m_Action;
 
-        public MenuAction(string i_Title, IRunnable i_Action) : base(i_Title)
+        public MenuAction(string i_Title, Action i_Action) : base(i_Title)
         {
-            this.m_Action = i_Action;
+            this.m_Action += i_Action;
         }
 
         public override void RunItem()
         {
-            this.m_Action.Run();
+            this.m_Action?.Invoke(); 
         }
 
         public override void OnSelected()

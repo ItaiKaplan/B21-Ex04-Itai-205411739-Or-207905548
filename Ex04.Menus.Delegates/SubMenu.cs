@@ -105,8 +105,10 @@ namespace Ex04.Menus.Delegates
 
         public override string ToString()
         {
-            StringBuilder menuDisplay = new StringBuilder($"0. {this.r_BackOptionName}\n");
+            StringBuilder menuDisplay = new StringBuilder($"{this.Title} - Delegates\n\n");
             int i = 1;
+
+            menuDisplay.Append($"0. {this.r_BackOptionName}\n");
             foreach(MenuItem item in this.MenuItems)
             {
                 menuDisplay.Append($"{i++}. {item.Title}\n");

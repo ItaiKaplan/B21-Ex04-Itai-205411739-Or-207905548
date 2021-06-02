@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Threading;
 
 namespace Ex04.Menus.Interfaces
 {
     public class MainMenu : ISelectedListener
     {
-
         private readonly SubMenu m_MainMenu = new SubMenu("Main Menu", "Exit");
         private MenuItem m_CurrentMenuItem;
 
@@ -36,10 +36,13 @@ namespace Ex04.Menus.Interfaces
 
         public void Show()
         {
-            while(true)
+            bool exitFlag = false;
+            while(!exitFlag)
             {
-                (this.CurrentMenuItem as SubMenu).RunMenu();
+                (this.CurrentMenuItem as SubMenu).RunMenu(out exitFlag);
             }
+            Console.WriteLine("Exiting Interface Implementation");
+            Thread.Sleep(1000);
         }
 
         public void OnSelect(SubMenu i_SubMenu)
