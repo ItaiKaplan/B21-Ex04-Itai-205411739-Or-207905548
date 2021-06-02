@@ -61,7 +61,7 @@ namespace Ex04.Menus.Interfaces
             userInput = getValidUserInput();
             if(userInput == 0)
             {
-                if(this.Father == null )
+                if(this.Father == null)
                 {
                     Environment.Exit(0);
                 }
@@ -112,9 +112,12 @@ namespace Ex04.Menus.Interfaces
 
         public override string ToString()
         {
-            StringBuilder menuDisplay = new StringBuilder($"0. {this.r_BackOptionName}\n");
+            StringBuilder menuDisplay = new StringBuilder($"{this.Title}\n\n");
             int i = 1;
-            foreach(MenuItem item in this.MenuItems)
+
+
+            menuDisplay.Append($"0. {this.r_BackOptionName}\n");
+            foreach(MenuItem item in this.m_MenuItems)
             {
                 menuDisplay.Append($"{i++}. {item.Title}\n");
             }
