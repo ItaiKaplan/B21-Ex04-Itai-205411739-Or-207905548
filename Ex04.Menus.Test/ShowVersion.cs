@@ -11,8 +11,10 @@ namespace Ex04.Menus.Test
     {
         void Interfaces.IRunnable.Run()
         {
+            Console.Clear();
             Console.WriteLine("Version: 21.1.4.8930");
-            Thread.Sleep(1000);
+            Console.WriteLine("Press any key to go back");
+            Console.ReadLine();
         }
     }
 }

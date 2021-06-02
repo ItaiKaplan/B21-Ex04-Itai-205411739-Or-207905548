@@ -13,12 +13,14 @@ namespace Ex04.Menus.Test
         {
             string userInput;
             int numberOfSpaces = 0;
-            
+
+            Console.Clear();
             Console.WriteLine("Please enter a sentence");
             userInput = Console.ReadLine();
             numberOfSpaces = countNumberOfSpaces(userInput);
             Console.WriteLine($"There are {numberOfSpaces} spaces in this sentence.");
-            Thread.Sleep(1000);
+            Console.WriteLine("Press any key to go back");
+            Console.ReadLine();
         }
 
         private int countNumberOfSpaces(string userInput)

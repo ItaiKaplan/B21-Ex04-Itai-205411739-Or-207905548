@@ -11,8 +11,10 @@ namespace Ex04.Menus.Test
     {
         void Interfaces.IRunnable.Run()
         {
-            Console.WriteLine(DateTime.Now.ToString("dddd , MMM dd yyyy"));
-            Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine(DateTime.Now.ToString("dddd, MMM dd yyyy"));
+            Console.WriteLine("Press any key to go back");
+            Console.ReadLine();
         }
     }
 }
