@@ -18,8 +18,9 @@ namespace Ex04.Menus.Test
             Console.WriteLine("Please enter a sentence");
             userInput = Console.ReadLine();
             numberOfSpaces = countNumberOfSpaces(userInput);
-            Console.WriteLine($"There are {numberOfSpaces} spaces in this sentence.");
-            Console.WriteLine("Press any key to go back");
+            Console.WriteLine($"The sentence you've entered is: \"{userInput}\",");
+            Console.WriteLine($"There are {numberOfSpaces} spaces in it.");
+            Console.WriteLine("\nPress any key to go back...");
             Console.ReadLine();
         }
 
