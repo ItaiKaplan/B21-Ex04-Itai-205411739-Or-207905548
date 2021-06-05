@@ -9,13 +9,13 @@ namespace Ex04.Menus.Interfaces
         private readonly string r_BackOptionName;
         private List<MenuItem> m_MenuItems; 
 
-
         public List<MenuItem> MenuItems
         {
             get
             {
                 return m_MenuItems;
             }
+
             set
             {
                 m_MenuItems = value;
@@ -52,7 +52,6 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-
         public void RunMenu(out bool o_exitFlag)
         {
             o_exitFlag = false;
@@ -60,6 +59,7 @@ namespace Ex04.Menus.Interfaces
             Console.Clear();
             Console.WriteLine(this.ToString());
             userInput = getValidUserInput();
+
             if(userInput == 0)
             {
                 if(this.Father == null)
@@ -100,9 +100,8 @@ namespace Ex04.Menus.Interfaces
         private bool validateInput(string i_UserInputString, out int io_UserInput)
         {
             bool isInputValid = false;
-            ;
-
             isInputValid = int.TryParse(i_UserInputString, out io_UserInput);
+
             if (isInputValid)
             {
                 if (io_UserInput < 0 || io_UserInput > this.MenuItems.Count)

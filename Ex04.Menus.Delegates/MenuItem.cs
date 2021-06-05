@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Delegates
 {
-
     public abstract class MenuItem
     {
         protected string m_Title;
         protected SubMenu m_Father;
+
         public event Action<MenuItem> m_SelectedDelegates;  
 
         public string Title
@@ -19,6 +15,7 @@ namespace Ex04.Menus.Delegates
             {
                 return m_Title;
             }
+
             set
             {
                 m_Title = value;
@@ -31,6 +28,7 @@ namespace Ex04.Menus.Delegates
             {
                 return m_Father;
             }
+
             set
             {
                 m_Father = value;
@@ -42,13 +40,11 @@ namespace Ex04.Menus.Delegates
             this.m_Title = i_Title;
         }
 
-
         public virtual void OnSelected()
         {
             this.m_SelectedDelegates?.Invoke(this);
         }
 
         public abstract void RunItem();
-
     }
 }

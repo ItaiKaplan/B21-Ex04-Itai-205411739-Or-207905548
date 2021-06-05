@@ -4,11 +4,6 @@
     {
         public static void Main()
         {
-            // Add comment to the Menu you dont want to preform
-            Interfaces.MainMenu mainMenu = new Interfaces.MainMenu();
-            Interfaces.MenuAction showVersion = new Interfaces.MenuAction("Show Version", new ShowVersion());
-            Interfaces.MenuAction showDate = new Interfaces.MenuAction("Show Date", new ShowDate());
-           
             runInterfacesMenu();
             runDelegatesMenu();
         }

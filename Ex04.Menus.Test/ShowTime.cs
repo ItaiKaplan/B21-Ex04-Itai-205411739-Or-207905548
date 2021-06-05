@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    class ShowTime : Interfaces.IRunnable, Delegates.IRunnable
+    public class ShowTime : Interfaces.IRunnable
     {
         public void Run()
         {

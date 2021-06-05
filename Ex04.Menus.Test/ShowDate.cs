@@ -1,14 +1,8 @@
-﻿using Ex04.Menus.Delegates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Ex04.Menus.Test
 {
-    internal class ShowDate : Interfaces.IRunnable, Delegates.IRunnable
+    internal class ShowDate : Interfaces.IRunnable
     {
         public void Run()
         {

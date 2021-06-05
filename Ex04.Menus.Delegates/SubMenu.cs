@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Delegates
 {
@@ -11,13 +9,13 @@ namespace Ex04.Menus.Delegates
         private readonly string r_BackOptionName;
         private List<MenuItem> m_MenuItems;
 
-
         public List<MenuItem> MenuItems
         {
             get
             {
                 return m_MenuItems;
             }
+
             set
             {
                 m_MenuItems = value;
@@ -44,20 +42,20 @@ namespace Ex04.Menus.Delegates
             i_MenuItem.m_SelectedDelegates -= i_OnSelectHandler;
         }
 
-
-
         public override void RunItem()
         {
             int userInput;
             Console.Clear();
             Console.WriteLine(this.ToString());
             userInput = getValidUserInput();
+
             if(userInput == 0)
             {
                 if(this.Father == null)
                 {
                     Environment.Exit(0);
                 }
+
                 this.Father.OnSelected();
             }
             else
@@ -89,7 +87,6 @@ namespace Ex04.Menus.Delegates
         private bool validateInput(string i_UserInputString, out int io_UserInput)
         {
             bool isInputValid = false;
-            ;
 
             isInputValid = int.TryParse(i_UserInputString, out io_UserInput);
             if(isInputValid)

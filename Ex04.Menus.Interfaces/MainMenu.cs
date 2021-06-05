@@ -22,6 +22,7 @@ namespace Ex04.Menus.Interfaces
             {
                 return m_CurrentMenuItem;
             }
+
             set
             {
                 m_CurrentMenuItem = value;
@@ -41,6 +42,7 @@ namespace Ex04.Menus.Interfaces
             {
                 (this.CurrentMenuItem as SubMenu).RunMenu(out exitFlag);
             }
+
             Console.WriteLine("Exiting Interface Implementation");
             Thread.Sleep(1000);
         }

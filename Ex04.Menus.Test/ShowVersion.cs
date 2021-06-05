@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    internal class ShowVersion : Interfaces.IRunnable, Delegates.IRunnable
+    internal class ShowVersion : Interfaces.IRunnable
     {
         public void Run()
         {
