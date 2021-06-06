@@ -90,7 +90,7 @@ namespace Ex04.Menus.Interfaces
                 isInputValid = validateInput(userInputString, out userInput);
                 if (!isInputValid)
                 {
-                    Console.WriteLine("Invalid Input\n");
+                    Console.WriteLine($"Invalid Input{Environment.NewLine}");
                 }
             }
 
@@ -115,13 +115,13 @@ namespace Ex04.Menus.Interfaces
 
         public override string ToString()
         {
-            StringBuilder menuDisplay = new StringBuilder($"{this.Title} - Interfaces\n\n");
+            StringBuilder menuDisplay = new StringBuilder($"{this.Title} - Interfaces{Environment.NewLine}{Environment.NewLine}");
             int i = 1;
 
-            menuDisplay.Append($"0. {this.r_BackOptionName}\n");
+            menuDisplay.Append($"0. {this.r_BackOptionName}{Environment.NewLine}");
             foreach(MenuItem item in this.m_MenuItems)
             {
-                menuDisplay.Append($"{i++}. {item.Title}\n");
+                menuDisplay.Append($"{i++}. {item.Title}{Environment.NewLine}");
             }
 
             return menuDisplay.ToString();

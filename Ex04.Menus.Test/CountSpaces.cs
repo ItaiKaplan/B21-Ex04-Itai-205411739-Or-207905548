@@ -15,7 +15,7 @@ namespace Ex04.Menus.Test
             numberOfSpaces = countNumberOfSpaces(userInput);
             Console.WriteLine($"The sentence you've entered is: \"{userInput}\",");
             Console.WriteLine($"There are {numberOfSpaces} spaces in it.");
-            Console.WriteLine("\nPress any key to go back...");
+            Console.WriteLine($"{Environment.NewLine}Press any key to go back...");
             Console.ReadLine();
         }
 

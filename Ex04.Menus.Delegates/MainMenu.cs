@@ -29,20 +29,17 @@
         public MainMenu()
         {
             this.CurrentMenuItem = m_MainMenu;
-            this.m_MainMenu.m_SelectedDelegates += this.OnSelect;
         }
 
         public void Show()
         {
-            while(true)
-            {
-                this.CurrentMenuItem.RunItem();
-            }
+            this.CurrentMenuItem.RunItem();
         }
 
         public void OnSelect(MenuItem i_SubMenu)
         {
             this.CurrentMenuItem = i_SubMenu;
+            this.Show();
         }
     }
 }

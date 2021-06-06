@@ -28,18 +28,16 @@ namespace Ex04.Menus.Delegates
             this.r_BackOptionName = i_BackOptionName;
         }
 
-        public void AddMenuItem(MenuItem i_MenuItem, Action<MenuItem> i_OnSelectHandler)
+        public void AddMenuItem(MenuItem i_MenuItem)
         {
             this.MenuItems.Add(i_MenuItem);
             i_MenuItem.Father = this;
-            i_MenuItem.m_SelectedDelegates += i_OnSelectHandler;
         }
 
-        public void RemoveMenuItem(MenuItem i_MenuItem, Action<MenuItem> i_OnSelectHandler)
+        public void RemoveMenuItem(MenuItem i_MenuItem)
         {
             this.MenuItems.Remove(i_MenuItem);
             i_MenuItem.Father = null;
-            i_MenuItem.m_SelectedDelegates -= i_OnSelectHandler;
         }
 
         public override void RunItem()
@@ -56,11 +54,11 @@ namespace Ex04.Menus.Delegates
                     Environment.Exit(0);
                 }
 
-                this.Father.OnSelected();
+                this.Father.RunItem();
             }
             else
             {
-                this.MenuItems[userInput - 1].OnSelected();
+                this.MenuItems[userInput - 1].RunItem();
             }
         }
 
@@ -77,7 +75,7 @@ namespace Ex04.Menus.Delegates
                 isInputValid = validateInput(userInputString, out userInput);
                 if(!isInputValid)
                 {
-                    Console.WriteLine("Invalid Input\n");
+                    Console.WriteLine($"Invalid Input{Environment.NewLine}");
                 }
             }
 
@@ -102,13 +100,13 @@ namespace Ex04.Menus.Delegates
 
         public override string ToString()
         {
-            StringBuilder menuDisplay = new StringBuilder($"{this.Title} - Delegates\n\n");
+            StringBuilder menuDisplay = new StringBuilder($"{this.Title} - Delegates{Environment.NewLine}{Environment.NewLine}");
             int i = 1;
 
-            menuDisplay.Append($"0. {this.r_BackOptionName}\n");
+            menuDisplay.Append($"0. {this.r_BackOptionName}{Environment.NewLine}");
             foreach(MenuItem item in this.MenuItems)
             {
-                menuDisplay.Append($"{i++}. {item.Title}\n");
+                menuDisplay.Append($"{i++}. {item.Title}{Environment.NewLine}");
             }
 
             return menuDisplay.ToString();

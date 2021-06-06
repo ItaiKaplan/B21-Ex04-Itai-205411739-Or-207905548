@@ -35,17 +35,17 @@
 
             Delegates.SubMenu firstMenu = new Delegates.SubMenu("Version And Spaces", "Back");
             Delegates.SubMenu secondMenu = new Delegates.SubMenu("Date and Time", "Back");
-            mainMenu.Main.AddMenuItem(firstMenu, mainMenu.OnSelect);
-            mainMenu.Main.AddMenuItem(secondMenu, mainMenu.OnSelect);
+            mainMenu.Main.AddMenuItem(firstMenu);
+            mainMenu.Main.AddMenuItem(secondMenu);
 
             Delegates.MenuAction showVersion = new Delegates.MenuAction("Show Version", new ShowVersion().Run);
             Delegates.MenuAction showDate = new Delegates.MenuAction("Show Date", new ShowDate().Run);
             Delegates.MenuAction showTime = new Delegates.MenuAction("Show Time", new ShowTime().Run);
             Delegates.MenuAction countSpaces = new Delegates.MenuAction("Count Spaces", new CountSpaces().Run);
-            firstMenu.AddMenuItem(countSpaces, mainMenu.OnSelect);
-            firstMenu.AddMenuItem(showVersion, mainMenu.OnSelect);
-            secondMenu.AddMenuItem(showTime, mainMenu.OnSelect);
-            secondMenu.AddMenuItem(showDate, mainMenu.OnSelect);
+            firstMenu.AddMenuItem(countSpaces);
+            firstMenu.AddMenuItem(showVersion);
+            secondMenu.AddMenuItem(showTime);
+            secondMenu.AddMenuItem(showDate);
 
             mainMenu.Show();
         }

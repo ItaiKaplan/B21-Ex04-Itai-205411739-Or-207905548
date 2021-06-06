@@ -4,22 +4,22 @@ namespace Ex04.Menus.Delegates
 {
     public class MenuAction : MenuItem
     {
-        public event Action m_Action;
+        public event Action ActionDelegate;
 
         public MenuAction(string i_Title, Action i_Action) : base(i_Title)
         {
-            this.m_Action += i_Action;
+            this.ActionDelegate += i_Action;
         }
 
         public override void RunItem()
         {
-            this.m_Action?.Invoke(); 
+            this.OnSelected();
         }
 
-        public override void OnSelected()
+        protected virtual void OnSelected()
         {
-            this.RunItem();
-            this.Father.OnSelected();
+            this.ActionDelegate?.Invoke();
+            this.Father.RunItem();
         }
     }
 }

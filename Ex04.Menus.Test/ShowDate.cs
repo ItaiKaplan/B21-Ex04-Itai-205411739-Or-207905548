@@ -9,7 +9,7 @@ namespace Ex04.Menus.Test
             Console.Clear();
             Console.WriteLine("Today is:");
             Console.WriteLine(DateTime.Now.ToString("dddd, MMM dd yyyy"));
-            Console.WriteLine("\nPress any key to go back...");
+            Console.WriteLine($"{Environment.NewLine}Press any key to go back...");
             Console.ReadLine();
         }
     }

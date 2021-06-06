@@ -7,8 +7,6 @@ namespace Ex04.Menus.Delegates
         protected string m_Title;
         protected SubMenu m_Father;
 
-        public event Action<MenuItem> m_SelectedDelegates;  
-
         public string Title
         {
             get
@@ -40,10 +38,10 @@ namespace Ex04.Menus.Delegates
             this.m_Title = i_Title;
         }
 
-        public virtual void OnSelected()
+       /* protected virtual void OnSelected()
         {
             this.m_SelectedDelegates?.Invoke(this);
-        }
+        }*/
 
         public abstract void RunItem();
     }
